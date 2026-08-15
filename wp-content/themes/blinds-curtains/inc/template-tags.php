@@ -213,6 +213,41 @@ function bc_footer_about() {
 }
 
 /**
+ * Aggregate Google rating, shown above the testimonials and published as
+ * AggregateRating in the structured data.
+ *
+ * @return array{average:string,count:string}
+ */
+function bc_review_summary() {
+	return apply_filters( 'bc_review_summary', array(
+		'average' => get_theme_mod( 'bc_review_average', '5.0' ),
+		'count'   => get_theme_mod( 'bc_review_count', '15' ),
+	) );
+}
+
+/**
+ * Initials for a reviewer's avatar disc, e.g. "Birgit Baur-Gallizioli" -> "BB".
+ *
+ * @param string $name Full name.
+ * @return string One or two uppercase letters.
+ */
+function bc_initials( $name ) {
+	$parts = preg_split( '/[\s\-]+/', trim( (string) $name ), -1, PREG_SPLIT_NO_EMPTY );
+	if ( ! $parts ) {
+		return '?';
+	}
+
+	$first = function_exists( 'mb_substr' ) ? mb_substr( $parts[0], 0, 1 ) : substr( $parts[0], 0, 1 );
+	$last  = '';
+	if ( count( $parts ) > 1 ) {
+		$tail = end( $parts );
+		$last = function_exists( 'mb_substr' ) ? mb_substr( $tail, 0, 1 ) : substr( $tail, 0, 1 );
+	}
+
+	return function_exists( 'mb_strtoupper' ) ? mb_strtoupper( $first . $last ) : strtoupper( $first . $last );
+}
+
+/**
  * The postal address as one line.
  *
  * Built from the SEO business fields so the address shown on the page and the

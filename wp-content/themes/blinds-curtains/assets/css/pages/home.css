@@ -603,18 +603,19 @@
 	margin-left: -16px;
 }
 
+/* Initials disc — reviewers are real people, so no stock portraits. */
 .bc-testimonial__avatar {
+	display: grid;
+	place-items: center;
 	flex: 0 0 auto;
 	width: 88px;
 	height: 88px;
 	border-radius: var(--bc-r-20);
-	overflow: hidden;
-}
-
-.bc-testimonial__avatar img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+	background: var(--bc-brand);
+	color: var(--bc-on-brand);
+	font-size: var(--bc-fs-32);
+	font-weight: 600;
+	letter-spacing: 0.02em;
 }
 
 .bc-testimonial__name {

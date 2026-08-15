@@ -95,6 +95,20 @@ function bc_schema_organization() {
 		$node['sameAs'] = array_values( $profiles );
 	}
 
+	// Real Google Business Profile figures — see bc_review_summary().
+	if ( function_exists( 'bc_review_summary' ) ) {
+		$reviews = bc_review_summary();
+		if ( $reviews['count'] > 0 ) {
+			$node['aggregateRating'] = array(
+				'@type'       => 'AggregateRating',
+				'ratingValue' => (string) $reviews['average'],
+				'reviewCount' => (string) $reviews['count'],
+				'bestRating'  => '5',
+				'worstRating' => '1',
+			);
+		}
+	}
+
 	return $node;
 }
 

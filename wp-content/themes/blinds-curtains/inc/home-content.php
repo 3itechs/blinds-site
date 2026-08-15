@@ -171,44 +171,41 @@ function bc_home_steps() {
 }
 
 /**
- * Testimonials (nodes 2:1437 – 2:1482). Four stars filled, one half — the
- * design uses star1 for filled and star5 for the trailing partial star.
+ * Testimonials — real Google Business Profile reviews for Dubai Blinds And
+ * Curtains, which holds 5.0 from 15 reviews.
  *
- * Written as launch copy at the client's direction. Swap each entry for a
- * genuine review as they come in — the `bc_home_testimonials` filter lets you
- * do that from a plugin without editing this file.
+ * Names and wording are quoted as written. The two longer entries are cut at a
+ * sentence boundary where Google itself truncated them. Avatars are reviewer
+ * initials rather than photographs: their Google profile pictures are not ours
+ * to republish, and stock faces would misrepresent who wrote the review.
  *
  * @return array<int, array<string, string>>
  */
 function bc_home_testimonials() {
 	return apply_filters( 'bc_home_testimonials', array(
 		array(
-			'avatar' => 'image20.jpg',
-			'name'   => __( 'Aisha Rahman', 'blinds-curtains' ),
-			'count'  => __( '(4k+)', 'blinds-curtains' ),
-			'title'  => __( 'Amazing Blinds', 'blinds-curtains' ),
-			'text'   => __( 'Our bedroom was unbearable by seven in the morning all summer. The blackout rollers changed that completely — the room stays dark and noticeably cooler. Measured on the Tuesday, fitted by the Friday, and the finish is spotless.', 'blinds-curtains' ),
+			'name'  => __( 'Shilpa Susan Jacob', 'blinds-curtains' ),
+			'when'  => __( '2 months ago', 'blinds-curtains' ),
+			'title' => __( 'Curtain Blinds, Windows & Door', 'blinds-curtains' ),
+			'text'  => __( 'Excellent service from start to finish! The team installed curtain blinds for our windows and door professionally and efficiently. They completed the work on time, stayed within the agreed budget, and delivered a neat, quality finish.', 'blinds-curtains' ),
 		),
 		array(
-			'avatar' => 'image21.jpg',
-			'name'   => __( 'Daniel Okonkwo', 'blinds-curtains' ),
-			'count'  => __( '(4k+)', 'blinds-curtains' ),
-			'title'  => __( 'Amazing Curtain', 'blinds-curtains' ),
-			'text'   => __( 'We wanted daylight without the glare on the television, and the advisor found exactly the right sheer. He held the samples against our own windows so we could see the difference. No pressure, and the price never moved.', 'blinds-curtains' ),
+			'name'  => __( 'Dovile Tamkutonyte', 'blinds-curtains' ),
+			'when'  => __( 'a month ago', 'blinds-curtains' ),
+			'title' => __( 'Sunscreen Blinds, Villa', 'blinds-curtains' ),
+			'text'  => __( 'Shahbaz and his team did an amazing job today at our villa with installing sunscreen blinds. Very polite, knowledgeable and professional. Excellent work! Highly recommended!!!', 'blinds-curtains' ),
 		),
 		array(
-			'avatar' => 'image22.jpg',
-			'name'   => __( 'Priya Menon', 'blinds-curtains' ),
-			'count'  => __( '(4k+)', 'blinds-curtains' ),
-			'title'  => __( 'Amazing Blinds', 'blinds-curtains' ),
-			'text'   => __( 'Motorised blinds through the whole apartment, linked to the home app and to Alexa. The team walked us through every option honestly, including where we did not need to spend. Quick, tidy and exactly on schedule.', 'blinds-curtains' ),
+			'name'  => __( 'Birgit Baur-Gallizioli', 'blinds-curtains' ),
+			'when'  => __( '3 months ago', 'blinds-curtains' ),
+			'title' => __( 'Returning Customer', 'blinds-curtains' ),
+			'text'  => __( 'Had recently another very good experience with the Shabaz team. Punctually, clean work, with a patience of an Elefant during the decision process. Making almost miracles to hide a 2 cm difference in room heights. Will always use this team again.', 'blinds-curtains' ),
 		),
 		array(
-			'avatar' => 'image23.jpg',
-			'name'   => __( 'Omar Al Sayegh', 'blinds-curtains' ),
-			'count'  => __( '(4k+)', 'blinds-curtains' ),
-			'title'  => __( 'Amazing Curtains', 'blinds-curtains' ),
-			'text'   => __( 'The curtains look better than we imagined and have held up through a full Dubai summer. What stood out was the aftercare — one track needed adjusting a month later and they came back and sorted it without any fuss.', 'blinds-curtains' ),
+			'name'  => __( 'Canaan Joseph', 'blinds-curtains' ),
+			'when'  => __( '3 months ago', 'blinds-curtains' ),
+			'title' => __( 'Amazing Quality Curtains', 'blinds-curtains' ),
+			'text'  => __( 'Amazing quality curtains, Shahbaz and his team did a wonderful job extremely quick and professional.', 'blinds-curtains' ),
 		),
 	) );
 }

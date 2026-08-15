@@ -2,12 +2,17 @@
 /**
  * "Our Happy Customer" testimonials (Figma nodes 2:1433 – 2:1482).
  *
+ * Content is the business's real Google reviews. Every card shows five filled
+ * stars because the profile stands at a straight 5.0 — see bc_home_testimonials().
+ *
  * @package blinds-curtains
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+$bc_rating = bc_review_summary();
 ?>
 <section class="bc-section bc-section--white bc-testimonials">
 	<div class="bc-container">
@@ -15,7 +20,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="bc-section-head">
 			<h2 class="bc-testimonials__title"><?php esc_html_e( 'Our Happy Customer', 'blinds-curtains' ); ?></h2>
 			<p class="bc-section-head__lead">
-				<?php esc_html_e( 'Homes, offices and villas across Dubai have had their windows dressed by our team. Here is what a few of them said about the fit, the finish and the service.', 'blinds-curtains' ); ?>
+				<?php
+				printf(
+					/* translators: 1: average rating, 2: number of reviews */
+					esc_html__( 'Rated %1$s from %2$s Google reviews. Here is what customers across Dubai said about the fit, the finish and the service.', 'blinds-curtains' ),
+					esc_html( $bc_rating['average'] ),
+					esc_html( $bc_rating['count'] )
+				);
+				?>
 			</p>
 		</div>
 
@@ -24,22 +36,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<li class="bc-testimonial">
 
 					<div class="bc-testimonial__head">
-						<span class="bc-testimonial__avatar">
-							<img src="<?php echo esc_url( BC_URI . '/assets/img/' . $bc_item['avatar'] ); ?>"
-							     alt="" width="88" height="88" loading="lazy" decoding="async">
+						<?php // Initials, not a stock face — the review belongs to a real person. ?>
+						<span class="bc-testimonial__avatar" aria-hidden="true">
+							<?php echo esc_html( bc_initials( $bc_item['name'] ) ); ?>
 						</span>
 						<div class="bc-testimonial__meta">
 							<p class="bc-testimonial__name"><?php echo esc_html( $bc_item['name'] ); ?></p>
 							<p class="bc-testimonial__rating">
-								<?php
-								// Four filled stars then the trailing partial star, as designed.
-								for ( $bc_i = 0; $bc_i < 4; $bc_i++ ) :
-									?>
+								<?php for ( $bc_i = 0; $bc_i < 5; $bc_i++ ) : ?>
 									<img src="<?php echo esc_url( BC_URI . '/assets/img/star1.svg' ); ?>" alt="" width="20" height="20">
 								<?php endfor; ?>
-								<img src="<?php echo esc_url( BC_URI . '/assets/img/star5.svg' ); ?>" alt="" width="20" height="20">
-								<span class="bc-testimonial__count"><?php echo esc_html( $bc_item['count'] ); ?></span>
-								<span class="screen-reader-text"><?php esc_html_e( 'Rated 4.5 out of 5', 'blinds-curtains' ); ?></span>
+								<?php if ( ! empty( $bc_item['when'] ) ) : ?>
+									<span class="bc-testimonial__count"><?php echo esc_html( $bc_item['when'] ); ?></span>
+								<?php endif; ?>
+								<span class="screen-reader-text"><?php esc_html_e( 'Rated 5 out of 5', 'blinds-curtains' ); ?></span>
 							</p>
 						</div>
 					</div>
