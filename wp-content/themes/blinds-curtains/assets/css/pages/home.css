@@ -586,59 +586,79 @@
 	margin-top: 44px;
 }
 
+/* Card is 283x335 on the 1440 artboard with 24px inner padding.
+   overflow:hidden is the backstop — nothing may escape the card. */
 .bc-testimonial {
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
-	padding: 8px 24px 24px;
+	padding: 24px;
 	background: var(--bc-cream);
 	border-radius: var(--bc-r-12);
 	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+	overflow: hidden;
 }
 
+/* Negative margins pull the avatar flush into the card's top-left corner,
+   the way the design has it, without removing the card's padding. */
 .bc-testimonial__head {
 	display: flex;
-	align-items: center;
-	gap: 10px;
-	margin-left: -16px;
+	align-items: flex-start;
+	gap: 12px;
+	margin: -24px -24px 4px -24px;
+	padding-right: 24px;
 }
 
-/* Initials disc — reviewers are real people, so no stock portraits. */
+/* Initials tile — reviewers are real people, so no stock portraits.
+   Square bottom-right corner mirrors the notched avatar in the design. */
 .bc-testimonial__avatar {
 	display: grid;
 	place-items: center;
 	flex: 0 0 auto;
-	width: 88px;
-	height: 88px;
-	border-radius: var(--bc-r-20);
+	width: 86px;
+	height: 86px;
+	border-radius: var(--bc-r-12) var(--bc-r-20) 0 var(--bc-r-20);
 	background: var(--bc-brand);
 	color: var(--bc-on-brand);
-	font-size: var(--bc-fs-32);
+	font-size: var(--bc-fs-24);
 	font-weight: 600;
 	letter-spacing: 0.02em;
 }
 
+/* min-width:0 lets this column shrink below its content width — without it
+   a long name forces the row wider than the card and the stars spill out. */
+.bc-testimonial__meta {
+	flex: 1 1 auto;
+	min-width: 0;
+	padding-top: 18px;
+}
+
 .bc-testimonial__name {
-	font-size: var(--bc-fs-18);
-	font-weight: 500;
-	line-height: var(--bc-lh-normal);
+	font-size: var(--bc-fs-16);
+	font-weight: 600;
+	line-height: var(--bc-lh-snug);
+	overflow-wrap: break-word;
 }
 
 .bc-testimonial__rating {
 	display: flex;
 	align-items: center;
-	gap: 2px;
-	margin-top: 4px;
+	flex-wrap: wrap;
+	gap: 1px;
+	margin-top: 6px;
 }
 
 .bc-testimonial__rating img {
-	width: 20px;
-	height: 20px;
+	width: 17px;
+	height: 17px;
 }
 
+/* Full-basis puts the date on its own line: five stars plus a date string
+   cannot share one line in a ~150px column. */
 .bc-testimonial__count {
-	margin-left: 6px;
-	font-size: var(--bc-fs-14);
+	flex: 0 0 100%;
+	margin-top: 2px;
+	font-size: var(--bc-fs-13);
 	opacity: var(--bc-dim-60);
 }
 
@@ -657,6 +677,12 @@
 @media (max-width: 1100px) {
 	.bc-testimonials__grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
 	.bc-testimonials__title { font-size: var(--bc-fs-36); letter-spacing: -1px; }
+}
+
+/* Narrow columns cannot carry an 86px avatar beside the name. */
+@media (max-width: 1240px) and (min-width: 1101px) {
+	.bc-testimonial__avatar { width: 72px; height: 72px; font-size: var(--bc-fs-20); }
+	.bc-testimonial__meta { padding-top: 12px; }
 }
 
 @media (max-width: 640px) {
