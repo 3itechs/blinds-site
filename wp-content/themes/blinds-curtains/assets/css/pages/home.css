@@ -1,0 +1,796 @@
+/**
+ * Home page sections — Figma node 2:1001.
+ *
+ * The Figma export is absolutely positioned on a 1440px canvas. Everything
+ * here is rebuilt as flow/grid layout at the same measurements so the page
+ * reflows rather than breaking below 1440px.
+ */
+
+/* A few sections sit on a 1302px grid (three 418px cards + 24px gaps),
+   which is wider than the standard 1280px container. */
+.bc-grid-wide {
+	max-width: 1302px;
+	margin-inline: auto;
+}
+
+/* ------------------------------------------------------------------- Hero */
+
+.bc-hero {
+	position: relative;
+	overflow: hidden;
+	background: var(--bc-page);
+}
+
+.bc-hero__track {
+	position: relative;
+	height: 628px;
+}
+
+.bc-hero__slide {
+	position: absolute;
+	inset: 0;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.5s ease;
+}
+
+.bc-hero__slide.is-active {
+	opacity: 1;
+	visibility: visible;
+}
+
+.bc-hero__image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* Frosted panel centred over the photo (nodes 2:1282 – 2:1284). */
+.bc-hero__card {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	/* 605px panel with 32px inset, so the 531px headline stays on one line
+	   exactly as in the design (node 2:1284). */
+	width: 605px;
+	max-width: calc(100% - (var(--bc-gutter) * 2));
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+	padding: 44px 32px;
+	text-align: center;
+	background: rgba(255, 255, 255, 0.18);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+}
+
+.bc-hero__title {
+	max-width: 531px;
+	font-size: var(--bc-fs-40);
+	font-weight: 600;
+	line-height: var(--bc-lh-tight);
+	color: var(--bc-ink-soft);
+}
+
+.bc-hero__title-accent {
+	display: block;
+	color: var(--bc-brand);
+}
+
+.bc-hero__text {
+	max-width: 399px;
+	font-size: var(--bc-fs-16);
+	line-height: var(--bc-lh-normal);
+	color: var(--bc-ink);
+}
+
+.bc-hero__cta {
+	min-width: 138.853px;
+}
+
+.bc-hero__dots {
+	position: absolute;
+	left: 50%;
+	bottom: 44px;
+	transform: translateX(-50%);
+	display: flex;
+	gap: 16px;
+}
+
+.bc-hero__dot {
+	width: 24px;
+	height: 24px;
+	border-radius: var(--bc-r-pill);
+	background: rgba(255, 255, 255, 0.75);
+	transition: background-color 0.2s ease;
+}
+
+.bc-hero__dot.is-active {
+	background: var(--bc-brand);
+}
+
+@media (max-width: 900px) {
+	.bc-hero__track { height: 480px; }
+	.bc-hero__title { font-size: var(--bc-fs-32); }
+	.bc-hero__card { padding: 32px 24px; }
+}
+
+/* ------------------------------------------------------- Category cards */
+
+.bc-categories__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 12px;
+	max-width: 1302px;
+	margin: 40px auto 0;
+}
+
+/* Card 426x577, 8px inner padding, 26px radius (node 2:1009). */
+.bc-category__link {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	height: 100%;
+	padding: 8px;
+	background: var(--bc-surface-muted);
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: var(--bc-r-26);
+	transition: border-color 0.2s ease;
+}
+
+.bc-category__link:hover {
+	border-color: var(--bc-brand);
+}
+
+.bc-category__media {
+	position: relative;
+	display: block;
+	aspect-ratio: 410 / 453;
+	border-radius: 18px;
+	overflow: hidden;
+}
+
+.bc-category__media > img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* Blurred pill, inset 24px from the image edges (node 2:1014). */
+.bc-category__pill {
+	position: absolute;
+	left: 24px;
+	right: 24px;
+	bottom: 28px;
+	height: 56px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 16px;
+	border-radius: var(--bc-r-50);
+	background: rgba(0, 0, 0, 0.3);
+	backdrop-filter: blur(22px);
+	-webkit-backdrop-filter: blur(22px);
+}
+
+.bc-category__more {
+	font-size: var(--bc-fs-18);
+	font-weight: 600;
+	color: var(--bc-on-brand);
+}
+
+.bc-category__arrow {
+	width: 32px;
+	height: 32px;
+	flex: 0 0 auto;
+}
+
+.bc-category__label {
+	display: grid;
+	place-items: center;
+	flex: 1 0 auto;
+	min-height: 108px;
+	background: var(--bc-surface);
+	border-radius: 18px;
+	font-size: var(--bc-fs-32);
+	font-weight: 600;
+}
+
+@media (max-width: 900px) {
+	.bc-categories__grid { grid-template-columns: 1fr; }
+	.bc-category__label { min-height: 80px; font-size: var(--bc-fs-24); }
+}
+
+/* --------------------------------------------------------- Go Automatic */
+
+/* Image column is 712px of the 1440px canvas and 697px tall (node 2:1395). */
+.bc-automatic {
+	display: grid;
+	grid-template-columns: 712fr 728fr;
+	align-items: stretch;
+	/* Trimmed from the artboard's 697px so the photo reads a little smaller. */
+	min-height: 600px;
+	background: var(--bc-surface);
+}
+
+/* The photo is positioned out of flow: left in flow its 712x697 intrinsic
+   ratio sets the row height and the section can never be made shorter. */
+.bc-automatic__media {
+	position: relative;
+	overflow: hidden;
+}
+
+.bc-automatic__media img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.bc-automatic__body {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	/* Centre the copy block vertically against the photo column. */
+	justify-content: center;
+	gap: 18px;
+	padding: 36px var(--bc-gutter) 36px 80px;
+}
+
+.bc-automatic__title {
+	max-width: 357px;
+	font-size: var(--bc-fs-46);
+	font-weight: 600;
+	line-height: var(--bc-lh-tight);
+}
+
+.bc-automatic__text {
+	max-width: 520px;
+	font-size: var(--bc-fs-16);
+	line-height: var(--bc-lh-normal);
+}
+
+.bc-automatic__features {
+	display: flex;
+	gap: 24px;
+	flex-wrap: wrap;
+}
+
+.bc-automatic__features li {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+	width: 96px;
+	text-align: center;
+	font-size: var(--bc-fs-16);
+	line-height: var(--bc-lh-snug);
+}
+
+.bc-automatic__features img {
+	width: 40px;
+	height: 40px;
+}
+
+.bc-automatic__cta {
+	min-height: 55px;
+	font-size: var(--bc-fs-20);
+	min-width: 156px;
+}
+
+@media (max-width: 1024px) {
+	.bc-automatic { grid-template-columns: 1fr; min-height: 0; }
+	/* Stacked: put the photo back in flow with a fixed band height. */
+	.bc-automatic__media { height: 360px; }
+	.bc-automatic__body { padding: 40px var(--bc-gutter); }
+	.bc-automatic__title { font-size: var(--bc-fs-36); }
+}
+
+/* ---------------------------------------------------------------- Trust */
+
+.bc-trust {
+	position: relative;
+	isolation: isolate;
+	padding-block: 70px 96px;
+	overflow: hidden;
+}
+
+.bc-trust__bg {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.bc-trust__title {
+	max-width: 623px;
+	margin-inline: auto;
+	font-size: var(--bc-fs-48);
+	font-weight: 600;
+	line-height: var(--bc-lh-normal);
+	color: var(--bc-on-brand);
+	text-align: center;
+}
+
+/* Three cards, then two centred — achieved by spanning 2 of 6 columns and
+   offsetting the fourth card (nodes 2:1220 / 2:1233). */
+.bc-trust__grid {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 24px;
+	max-width: 1302px;
+	margin: 46px auto 0;
+}
+
+.bc-trust-card {
+	grid-column: span 2;
+	display: flex;
+	flex-direction: column;
+	border-radius: var(--bc-r-12);
+	overflow: hidden;
+	/* Dark translucent layer letting the background blobs read through,
+	   matching the card fills in the design. */
+	background: rgba(0, 0, 0, 0.28);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+}
+
+.bc-trust__grid > .bc-trust-card:nth-child(4) {
+	grid-column: 2 / span 2;
+}
+
+.bc-trust__grid > .bc-trust-card:nth-child(5) {
+	grid-column: 4 / span 2;
+}
+
+.bc-trust-card__image {
+	width: 100%;
+	aspect-ratio: 418 / 221;
+	object-fit: cover;
+}
+
+.bc-trust-card__body {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	flex: 1;
+	padding: 24px;
+	color: var(--bc-on-brand);
+}
+
+.bc-trust-card__title {
+	font-size: var(--bc-fs-24);
+	font-weight: 600;
+	line-height: var(--bc-lh-snug);
+}
+
+.bc-trust-card__text {
+	font-size: var(--bc-fs-16);
+	line-height: var(--bc-lh-snug);
+}
+
+.bc-trust-card__actions {
+	display: flex;
+	gap: 12px;
+	margin-top: auto;
+	padding-top: 12px;
+	flex-wrap: wrap;
+}
+
+@media (max-width: 1024px) {
+	.bc-trust__grid { grid-template-columns: 1fr; }
+	.bc-trust__grid > .bc-trust-card,
+	.bc-trust__grid > .bc-trust-card:nth-child(4),
+	.bc-trust__grid > .bc-trust-card:nth-child(5) {
+		grid-column: auto;
+	}
+	.bc-trust__title { font-size: var(--bc-fs-36); }
+}
+
+/* ---------------------------------------------------------- Inspiration */
+
+.bc-inspiration__grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 16px;
+	margin-top: 40px;
+}
+
+.bc-inspiration__col {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.bc-inspiration__tile {
+	margin: 0;
+	height: var(--tile-h);
+	border-radius: var(--bc-r-8);
+	overflow: hidden;
+}
+
+.bc-inspiration__tile img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.4s ease;
+}
+
+.bc-inspiration__tile:hover img {
+	transform: scale(1.04);
+}
+
+.bc-inspiration__more {
+	display: flex;
+	justify-content: center;
+	margin-top: 36px;
+}
+
+.bc-inspiration__more .bc-btn { min-width: 152px; }
+
+@media (max-width: 1024px) {
+	.bc-inspiration__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+	.bc-inspiration__grid { grid-template-columns: 1fr; }
+	.bc-inspiration__tile { height: auto; aspect-ratio: 315 / 378; }
+}
+
+/* ------------------------------------------------------------ Need Help */
+
+.bc-help__card {
+	position: relative;
+	isolation: isolate;
+	border-radius: var(--bc-r-20);
+	overflow: hidden;
+	min-height: 410px;
+	display: flex;
+	align-items: center;
+}
+
+.bc-help__bg {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.bc-help__body {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 16px;
+	width: min(660px, 60%);
+	padding: 40px;
+}
+
+.bc-help__title {
+	font-size: var(--bc-fs-48);
+	font-weight: 600;
+	line-height: var(--bc-lh-normal);
+}
+
+.bc-help__lead {
+	font-size: var(--bc-fs-24);
+	line-height: var(--bc-lh-normal);
+}
+
+.bc-help__text {
+	font-size: var(--bc-fs-14);
+	line-height: var(--bc-lh-normal);
+}
+
+.bc-help__body .bc-btn--outline { min-width: 173px; }
+
+@media (max-width: 900px) {
+	.bc-help__body { width: 100%; padding: 32px 24px; background: rgba(255, 255, 255, 0.82); }
+	.bc-help__title { font-size: var(--bc-fs-36); }
+}
+
+/* --------------------------------------------------------- How it works */
+
+.bc-steps {
+	background: var(--bc-surface);
+	padding-top: 64px;
+}
+
+.bc-steps__eyebrow {
+	font-size: var(--bc-fs-24);
+	font-weight: 500;
+	line-height: 30px;
+	color: var(--bc-gray-900);
+}
+
+.bc-steps__title {
+	max-width: 1150px;
+	font-size: var(--bc-fs-48);
+	font-weight: 600;
+	line-height: var(--bc-lh-normal);
+	text-align: center;
+}
+
+/* Full-bleed four-column band; columns 2 and 4 are filled orange. */
+.bc-steps__grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	margin-top: 48px;
+}
+
+.bc-step {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 12px;
+	padding: 40px 24px 48px;
+	text-align: center;
+}
+
+.bc-step--filled {
+	background: var(--bc-brand);
+	color: var(--bc-on-brand);
+}
+
+.bc-step img {
+	width: 48px;
+	height: 48px;
+}
+
+.bc-step--filled img {
+	filter: brightness(0) invert(1);
+}
+
+.bc-step__title {
+	max-width: 240px;
+	font-size: var(--bc-fs-24);
+	font-weight: 600;
+	line-height: var(--bc-lh-tight);
+}
+
+.bc-step__text {
+	max-width: 300px;
+	font-size: var(--bc-fs-16);
+	line-height: var(--bc-lh-snug);
+}
+
+@media (max-width: 1024px) {
+	.bc-steps__title { font-size: var(--bc-fs-32); }
+	.bc-steps__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+	.bc-steps__grid { grid-template-columns: 1fr; }
+}
+
+/* --------------------------------------------------------- Testimonials */
+
+.bc-testimonials__title {
+	font-size: var(--bc-fs-52);
+	font-weight: 600;
+	line-height: var(--bc-lh-normal);
+	letter-spacing: -2px;
+	color: var(--bc-base-02);
+}
+
+.bc-testimonials__grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 51px;
+	margin-top: 44px;
+}
+
+.bc-testimonial {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding: 8px 24px 24px;
+	background: var(--bc-cream);
+	border-radius: var(--bc-r-12);
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.bc-testimonial__head {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-left: -16px;
+}
+
+.bc-testimonial__avatar {
+	flex: 0 0 auto;
+	width: 88px;
+	height: 88px;
+	border-radius: var(--bc-r-20);
+	overflow: hidden;
+}
+
+.bc-testimonial__avatar img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.bc-testimonial__name {
+	font-size: var(--bc-fs-18);
+	font-weight: 500;
+	line-height: var(--bc-lh-normal);
+}
+
+.bc-testimonial__rating {
+	display: flex;
+	align-items: center;
+	gap: 2px;
+	margin-top: 4px;
+}
+
+.bc-testimonial__rating img {
+	width: 20px;
+	height: 20px;
+}
+
+.bc-testimonial__count {
+	margin-left: 6px;
+	font-size: var(--bc-fs-14);
+	opacity: var(--bc-dim-60);
+}
+
+.bc-testimonial__subject {
+	font-size: var(--bc-fs-18);
+	font-weight: 500;
+	line-height: var(--bc-lh-normal);
+}
+
+.bc-testimonial__text {
+	font-size: var(--bc-fs-14);
+	line-height: var(--bc-lh-normal);
+	opacity: var(--bc-dim-80);
+}
+
+@media (max-width: 1100px) {
+	.bc-testimonials__grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+	.bc-testimonials__title { font-size: var(--bc-fs-36); letter-spacing: -1px; }
+}
+
+@media (max-width: 640px) {
+	.bc-testimonials__grid { grid-template-columns: 1fr; }
+}
+
+/* ----------------------------------------------------- Appointment form */
+
+.bc-appointment {
+	background: var(--bc-cream-soft);
+	padding-block: 54px 64px;
+}
+
+.bc-appointment__title {
+	font-size: var(--bc-fs-48);
+	font-weight: 600;
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+.bc-appointment__notice {
+	max-width: 720px;
+	margin: 0 auto 28px;
+	padding: 14px 20px;
+	border-radius: var(--bc-r-8);
+	background: var(--bc-surface);
+	border-left: 4px solid var(--bc-brand);
+	font-size: var(--bc-fs-16);
+}
+
+.bc-appointment__notice--error {
+	border-left-color: #b3261e;
+}
+
+.bc-form__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px 36px;
+}
+
+.bc-field {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.bc-field--full {
+	grid-column: 1 / -1;
+}
+
+.bc-field label,
+.bc-form__needs legend {
+	font-size: var(--bc-fs-18);
+	font-weight: 600;
+	line-height: var(--bc-lh-snug);
+}
+
+.bc-field input,
+.bc-field select {
+	width: 100%;
+	height: 48px;
+	padding: 0 16px;
+	background: var(--bc-surface);
+	border: 1px solid rgba(0, 0, 0, 0.12);
+	border-radius: var(--bc-r-5);
+	font-size: var(--bc-fs-16);
+}
+
+.bc-field input::placeholder {
+	color: rgba(0, 0, 0, 0.45);
+}
+
+.bc-field input:focus,
+.bc-field select:focus {
+	border-color: var(--bc-brand);
+	outline: none;
+	box-shadow: 0 0 0 3px var(--bc-brand-24);
+}
+
+.bc-form__needs {
+	margin: 24px 0 0;
+	padding: 0;
+	border: 0;
+}
+
+.bc-form__needs legend {
+	padding: 0;
+	margin-bottom: 12px;
+}
+
+.bc-checks {
+	display: flex;
+	gap: 40px;
+	flex-wrap: wrap;
+}
+
+.bc-check {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	font-size: var(--bc-fs-16);
+	opacity: var(--bc-dim-80);
+	cursor: pointer;
+}
+
+.bc-check input {
+	width: 20px;
+	height: 20px;
+	accent-color: var(--bc-brand);
+}
+
+.bc-form > .bc-field--full {
+	margin-top: 24px;
+}
+
+/* Honeypot — visually gone but not display:none, which some bots skip. */
+.bc-hp {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+.bc-form__submit {
+	display: flex;
+	justify-content: center;
+	margin-top: 36px;
+}
+
+.bc-form__submit .bc-btn {
+	min-width: 240px;
+}
+
+@media (max-width: 900px) {
+	.bc-form__grid { grid-template-columns: 1fr; }
+	.bc-appointment__title { font-size: var(--bc-fs-32); }
+}

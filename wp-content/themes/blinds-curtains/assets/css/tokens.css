@@ -1,0 +1,102 @@
+/**
+ * Design tokens — transcribed from Figma file RDzp9HOVnJGsVu5fpTmhNd.
+ *
+ * Values are taken verbatim from the design context, not eyeballed from the
+ * render. Where the Figma file used a raw hex repeatedly it has been promoted
+ * to a named token here; the two published Figma variables (Base/02, gray/900)
+ * keep their original names.
+ */
+
+:root {
+	/* ---- Brand ---- */
+	--bc-brand: #e2783c;          /* dominant accent: buttons, headings, rules */
+	--bc-brand-24: rgba(226, 120, 60, 0.24);
+	--bc-brand-36: rgba(226, 120, 60, 0.36);
+
+	/* ---- Surfaces ---- */
+	--bc-page: #f8f8f8;           /* page background */
+	--bc-surface: #ffffff;
+	--bc-surface-alt: #fafafa;
+	--bc-surface-muted: #f2f2f2;
+	--bc-cream: #fff5d6;
+	--bc-cream-soft: #fff2e8;     /* appointment form background */
+	--bc-cream-warm: #f6f1e6;
+
+	/* ---- Text (Base/02 and gray/900 are the file's Figma variables) ---- */
+	--bc-base-02: #090914;
+	--bc-gray-900: #18181b;
+	--bc-ink: #000000;
+	--bc-ink-soft: #333333;
+	--bc-on-brand: #ffffff;
+	--bc-rule: rgba(0, 0, 0, 0.24);
+	--bc-rule-light: rgba(255, 255, 255, 0.24);
+
+	/* Opacity steps the design applies to body copy */
+	--bc-dim-80: 0.8;
+	--bc-dim-60: 0.6;
+
+	/* ---- Typography ---- */
+	--bc-font-body: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+	--bc-font-ui: "Plus Jakarta Sans", var(--bc-font-body);
+	--bc-font-display: "Poltawski Nowy", Georgia, "Times New Roman", serif;
+
+	--bc-fs-13: 0.8125rem;
+	--bc-fs-14: 0.875rem;
+	--bc-fs-16: 1rem;
+	--bc-fs-18: 1.125rem;
+	--bc-fs-20: 1.25rem;
+	--bc-fs-24: 1.5rem;
+	--bc-fs-32: 2rem;
+	--bc-fs-36: 2.25rem;
+	--bc-fs-40: 2.5rem;
+	--bc-fs-46: 2.875rem;
+	--bc-fs-48: 3rem;
+	--bc-fs-52: 3.25rem;
+
+	--bc-lh-tight: 1.2;
+	--bc-lh-snug: 1.4;
+	--bc-lh-normal: 1.5;
+	--bc-lh-logo: 0.93;
+
+	/* ---- Radii ---- */
+	--bc-r-2: 2px;
+	--bc-r-4: 4px;
+	--bc-r-5: 5px;
+	--bc-r-8: 8px;
+	--bc-r-10: 10px;
+	--bc-r-12: 12px;
+	--bc-r-20: 20px;
+	--bc-r-26: 26px;
+	--bc-r-30: 30px;
+	--bc-r-40: 40px;
+	--bc-r-50: 50px;
+	--bc-r-pill: 999px;
+
+	/* ---- Layout ---- */
+	--bc-canvas: 1440px;          /* Figma artboard width */
+	--bc-container: 1280px;       /* content width inside 80px gutters */
+	--bc-gutter: 80px;            /* section horizontal padding */
+	--bc-gutter-wide: 100px;      /* top utility bar padding */
+
+	/* ---- Elevation ---- */
+	--bc-shadow-header: 0 2px 2.9px rgba(0, 0, 0, 0.25);
+}
+
+/*
+ * The Figma file only contains a 1440px desktop artboard — there are no
+ * tablet or mobile frames. Gutters below scale down so the layout stays
+ * usable on small screens; revisit if mobile frames are added later.
+ */
+@media (max-width: 1200px) {
+	:root {
+		--bc-gutter: 48px;
+		--bc-gutter-wide: 48px;
+	}
+}
+
+@media (max-width: 782px) {
+	:root {
+		--bc-gutter: 20px;
+		--bc-gutter-wide: 20px;
+	}
+}

@@ -1,0 +1,72 @@
+# Production .htaccess for a root-domain install on Hostinger (LiteSpeed).
+# Upload as ".htaccess" in public_html — note the leading dot.
+#
+# Difference from the local file: RewriteBase is "/" instead of "/blinds/".
+
+# BEGIN WebP
+# Serves the .webp twin when the browser advertises support. Templates keep
+# referencing .jpg/.png, so nothing else has to change.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTP_ACCEPT} image/webp
+RewriteCond %{REQUEST_FILENAME} (?i)(.*)\.(jpe?g|png)$
+RewriteCond %1\.webp -f
+RewriteRule (?i)(.*)\.(jpe?g|png)$ $1.webp [T=image/webp,E=WEBP_SERVED:1,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+# Caches must key on Accept, or a WebP can be handed to a client that cannot
+# decode it.
+<FilesMatch "(?i)\.(jpe?g|png|webp)$">
+Header append Vary Accept
+</FilesMatch>
+</IfModule>
+
+<IfModule mod_mime.c>
+AddType image/webp .webp
+</IfModule>
+# END WebP
+
+# BEGIN Compression
+<IfModule mod_deflate.c>
+<IfModule mod_filter.c>
+AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+AddOutputFilterByType DEFLATE application/json application/ld+json
+AddOutputFilterByType DEFLATE image/svg+xml application/xml
+</IfModule>
+</IfModule>
+# END Compression
+
+# BEGIN Caching
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/webp                "access plus 1 year"
+ExpiresByType image/jpeg                "access plus 1 year"
+ExpiresByType image/png                 "access plus 1 year"
+ExpiresByType image/svg+xml             "access plus 1 year"
+ExpiresByType text/css                  "access plus 1 month"
+ExpiresByType application/javascript    "access plus 1 month"
+ExpiresByType font/woff2                "access plus 1 year"
+</IfModule>
+# END Caching
+
+# BEGIN Security
+# Block direct access to the config file and hide directory listings.
+<Files wp-config.php>
+Require all denied
+</Files>
+Options -Indexes
+# END Security
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress

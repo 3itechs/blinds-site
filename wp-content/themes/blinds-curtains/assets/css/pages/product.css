@@ -1,0 +1,341 @@
+/**
+ * Product detail — Figma node 2:3012.
+ */
+
+.bc-product {
+	padding-block: 48px 56px;
+	background: var(--bc-page);
+}
+
+.bc-product__layout {
+	display: grid;
+	grid-template-columns: 620fr 620fr;
+	gap: 40px;
+	align-items: start;
+}
+
+/* ------------------------------------------------------------- Gallery */
+
+.bc-product__stage {
+	margin: 0;
+	aspect-ratio: 1 / 1;
+	border-radius: var(--bc-r-8);
+	overflow: hidden;
+	background: var(--bc-surface-muted);
+}
+
+.bc-product__stage img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.bc-product__thumbs {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 12px;
+	margin-top: 16px;
+}
+
+.bc-product__thumb {
+	display: block;
+	width: 100%;
+	aspect-ratio: 114 / 100;
+	border: 2px solid transparent;
+	border-radius: var(--bc-r-4);
+	overflow: hidden;
+}
+
+.bc-product__thumb img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.bc-product__thumb.is-active {
+	border-color: var(--bc-brand);
+}
+
+/* ---------------------------------------------------------------- Info */
+
+.bc-product__info {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding-top: 8px;
+}
+
+.bc-product__title {
+	font-size: var(--bc-fs-40);
+	font-weight: 700;
+	line-height: var(--bc-lh-tight);
+}
+
+.bc-product__chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+
+.bc-product__chips li {
+	padding: 9px 18px;
+	border: 1px solid rgba(0, 0, 0, 0.18);
+	border-radius: var(--bc-r-pill);
+	font-size: var(--bc-fs-16);
+	line-height: var(--bc-lh-snug);
+}
+
+.bc-product__from {
+	margin-top: 4px;
+	font-size: var(--bc-fs-16);
+	font-weight: 500;
+}
+
+.bc-product__price {
+	display: flex;
+	align-items: baseline;
+	gap: 8px;
+}
+
+.bc-product__price span {
+	font-size: var(--bc-fs-32);
+	font-weight: 700;
+	color: var(--bc-brand);
+}
+
+.bc-product__price small {
+	font-size: var(--bc-fs-16);
+	opacity: var(--bc-dim-80);
+}
+
+.bc-product__desc {
+	font-size: var(--bc-fs-16);
+	line-height: var(--bc-lh-normal);
+}
+
+.bc-product__desc p + p {
+	margin-top: 12px;
+}
+
+.bc-product__actions {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+	margin-top: 8px;
+}
+
+.bc-product__book,
+.bc-product__whatsapp {
+	min-height: 56px;
+	border-radius: var(--bc-r-5);
+	font-size: var(--bc-fs-18);
+	font-weight: 600;
+	color: var(--bc-on-brand);
+}
+
+.bc-product__book {
+	background: var(--bc-brand);
+}
+
+.bc-product__book:hover {
+	background: #cf6a31;
+}
+
+/* WhatsApp keeps its own brand green rather than the site palette. */
+.bc-product__whatsapp {
+	background: #25d366;
+	letter-spacing: 0.02em;
+}
+
+.bc-product__whatsapp:hover {
+	background: #1fbb59;
+}
+
+.bc-product__whatsapp svg {
+	width: 24px;
+	height: 24px;
+	fill: currentColor;
+}
+
+.bc-product__assurances {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 16px;
+	margin-top: 8px;
+}
+
+.bc-product__assurances li {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+	padding: 20px 12px;
+	background: var(--bc-surface);
+	border: 1px solid rgba(0, 0, 0, 0.10);
+	border-radius: var(--bc-r-8);
+	text-align: center;
+	font-size: var(--bc-fs-16);
+	line-height: var(--bc-lh-snug);
+}
+
+.bc-product__assurance-icon {
+	display: grid;
+	place-items: center;
+	width: 44px;
+	height: 44px;
+	border-radius: var(--bc-r-pill);
+	background: var(--bc-cream-soft);
+}
+
+.bc-product__assurance-icon svg {
+	width: 22px;
+	height: 22px;
+	fill: var(--bc-brand);
+}
+
+.bc-product__pay {
+	display: flex;
+	gap: 6px;
+}
+
+.bc-product__pay em {
+	padding: 2px 8px;
+	border-radius: var(--bc-r-4);
+	font-size: var(--bc-fs-13);
+	font-style: normal;
+	font-weight: 700;
+}
+
+.bc-product__pay--tabby  { background: #3bffc1; color: #0a0a0a; }
+.bc-product__pay--tamara { background: #ffd6a5; color: #0a0a0a; }
+
+@media (max-width: 1024px) {
+	.bc-product__layout { grid-template-columns: 1fr; }
+	.bc-product__title { font-size: var(--bc-fs-32); }
+}
+
+@media (max-width: 600px) {
+	.bc-product__actions,
+	.bc-product__assurances { grid-template-columns: 1fr; }
+}
+
+/* ------------------------------------------------- Best experience band */
+
+.bc-experience {
+	background: var(--bc-cream-soft);
+	padding-block: 56px;
+}
+
+.bc-experience__layout {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 56px;
+	align-items: center;
+}
+
+.bc-experience__body {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 20px;
+}
+
+.bc-experience__title {
+	max-width: 520px;
+	font-size: var(--bc-fs-40);
+	font-weight: 700;
+	line-height: var(--bc-lh-tight);
+}
+
+.bc-experience__text {
+	max-width: 580px;
+	font-size: var(--bc-fs-16);
+	line-height: var(--bc-lh-normal);
+	opacity: var(--bc-dim-80);
+}
+
+.bc-experience__media {
+	margin: 0;
+	border-radius: var(--bc-r-20);
+	overflow: hidden;
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.bc-experience__media img {
+	width: 100%;
+	height: 430px;
+	object-fit: cover;
+}
+
+@media (max-width: 900px) {
+	.bc-experience__layout { grid-template-columns: 1fr; gap: 28px; }
+	.bc-experience__title { font-size: var(--bc-fs-32); }
+	.bc-experience__media img { height: 280px; }
+}
+
+/* ----------------------------------------------------- Related products */
+
+.bc-related__title {
+	font-size: var(--bc-fs-40);
+	font-weight: 700;
+	text-align: center;
+}
+
+.bc-related__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 32px;
+	margin-top: 36px;
+}
+
+.bc-related-card > a {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	height: 100%;
+	padding: 12px;
+	background: var(--bc-surface);
+	border-radius: var(--bc-r-12);
+	box-shadow: 0 2px 14px rgba(0, 0, 0, 0.06);
+}
+
+.bc-related-card img {
+	width: 100%;
+	aspect-ratio: 380 / 455;
+	object-fit: cover;
+	border-radius: var(--bc-r-8);
+}
+
+.bc-related-card__title {
+	font-size: var(--bc-fs-24);
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.bc-related-card__text {
+	font-size: var(--bc-fs-16);
+	line-height: var(--bc-lh-snug);
+	opacity: var(--bc-dim-80);
+}
+
+.bc-related-card__cta {
+	display: grid;
+	place-items: center;
+	margin-top: auto;
+	min-height: 52px;
+	background: var(--bc-surface-muted);
+	border-radius: var(--bc-r-8);
+	font-size: var(--bc-fs-18);
+	font-weight: 600;
+	transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.bc-related-card > a:hover .bc-related-card__cta {
+	background: var(--bc-brand);
+	color: var(--bc-on-brand);
+}
+
+@media (max-width: 900px) {
+	.bc-related__grid { grid-template-columns: 1fr; }
+	.bc-related__title { font-size: var(--bc-fs-32); }
+}

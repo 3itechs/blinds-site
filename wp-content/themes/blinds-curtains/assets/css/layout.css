@@ -1,0 +1,95 @@
+/**
+ * Containers and section rhythm.
+ *
+ * The Figma artboard is 1440px wide with 80px gutters, giving a 1280px
+ * content column. Everything below reproduces that and degrades gracefully.
+ */
+
+.bc-container {
+	width: 100%;
+	max-width: calc(var(--bc-container) + (var(--bc-gutter) * 2));
+	margin-inline: auto;
+	padding-inline: var(--bc-gutter);
+}
+
+.bc-container--wide {
+	max-width: calc(var(--bc-container) + (var(--bc-gutter-wide) * 2));
+	padding-inline: var(--bc-gutter-wide);
+}
+
+.bc-container--flush {
+	max-width: var(--bc-canvas);
+	padding-inline: 0;
+}
+
+/* Full-bleed band that keeps its inner content aligned to the container. */
+.bc-section {
+	padding-block: 56px;
+}
+
+.bc-section--tight {
+	padding-block: 32px;
+}
+
+.bc-section--loose {
+	padding-block: 80px;
+}
+
+.bc-section--white {
+	background: var(--bc-surface);
+}
+
+.bc-section--page {
+	background: var(--bc-page);
+}
+
+.bc-section--cream {
+	background: var(--bc-cream-soft);
+}
+
+/* Section heading block: centred 48px title with an 18px lead beneath. */
+.bc-section-head {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 12px;
+	text-align: center;
+}
+
+.bc-section-head__title {
+	font-size: var(--bc-fs-48);
+	font-weight: 600;
+	line-height: var(--bc-lh-normal);
+	color: var(--bc-ink);
+}
+
+.bc-section-head__lead {
+	font-size: var(--bc-fs-18);
+	font-weight: 400;
+	opacity: var(--bc-dim-80);
+	max-width: 620px;
+}
+
+@media (max-width: 1024px) {
+	.bc-section-head__title {
+		font-size: var(--bc-fs-36);
+	}
+}
+
+@media (max-width: 640px) {
+	.bc-section-head__title {
+		font-size: var(--bc-fs-32);
+	}
+
+	.bc-section-head__lead {
+		font-size: var(--bc-fs-16);
+	}
+
+	.bc-section {
+		padding-block: 40px;
+	}
+
+	.bc-section--loose {
+		padding-block: 48px;
+	}
+}

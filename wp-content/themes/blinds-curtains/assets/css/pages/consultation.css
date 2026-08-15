@@ -1,0 +1,184 @@
+/**
+ * Free in-Home Consultation page.
+ */
+
+/* Hero carries a stacked button + text link rather than a single CTA. */
+.bc-page-hero--consult .bc-page-hero__card {
+	gap: 12px;
+}
+
+.bc-page-hero--consult .bc-page-hero__title {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.bc-page-hero__link {
+	color: var(--bc-on-brand);
+	font-size: var(--bc-fs-16);
+	font-weight: 500;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.bc-page-hero__link:hover {
+	color: var(--bc-brand);
+}
+
+/* ------------------------------------------------------- How it works row */
+
+.bc-consult__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 32px;
+	margin-top: 40px;
+}
+
+.bc-consult__step figure {
+	margin: 0 0 16px;
+	border-radius: var(--bc-r-8);
+	overflow: hidden;
+}
+
+.bc-consult__step img {
+	width: 100%;
+	aspect-ratio: 410 / 250;
+	object-fit: cover;
+}
+
+.bc-consult__step h3 {
+	font-size: var(--bc-fs-20);
+	font-weight: 600;
+	line-height: var(--bc-lh-snug);
+	margin-bottom: 8px;
+}
+
+.bc-consult__step p {
+	font-size: var(--bc-fs-16);
+	line-height: var(--bc-lh-normal);
+	opacity: var(--bc-dim-80);
+}
+
+@media (max-width: 900px) {
+	.bc-consult__grid { grid-template-columns: 1fr; }
+}
+
+/* ------------------------------------------------- Manage appointment strip */
+
+.bc-manage {
+	text-align: center;
+}
+
+.bc-manage__title {
+	font-size: var(--bc-fs-32);
+	font-weight: 600;
+	line-height: var(--bc-lh-snug);
+}
+
+.bc-manage__link {
+	display: inline-block;
+	margin-top: 8px;
+	font-size: var(--bc-fs-16);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.bc-manage__link:hover {
+	color: var(--bc-brand);
+}
+
+/* ----------------------------------------------------------- Real projects */
+
+.bc-projects__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 16px;
+	margin-top: 36px;
+}
+
+.bc-projects__col {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.bc-projects__col figure {
+	margin: 0;
+	border-radius: var(--bc-r-8);
+	overflow: hidden;
+}
+
+.bc-projects__col img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* Staggered heights give the masonry rhythm of the design. */
+.bc-projects__col:nth-child(1) figure:nth-child(1) img { aspect-ratio: 4 / 5; }
+.bc-projects__col:nth-child(1) figure:nth-child(2) img { aspect-ratio: 4 / 3; }
+.bc-projects__col:nth-child(1) figure:nth-child(3) img { aspect-ratio: 4 / 5; }
+.bc-projects__col:nth-child(2) figure:nth-child(1) img { aspect-ratio: 4 / 3; }
+.bc-projects__col:nth-child(2) figure:nth-child(2) img { aspect-ratio: 3 / 4; }
+.bc-projects__col:nth-child(2) figure:nth-child(3) img { aspect-ratio: 4 / 3; }
+.bc-projects__col:nth-child(3) figure:nth-child(1) img { aspect-ratio: 3 / 4; }
+.bc-projects__col:nth-child(3) figure:nth-child(2) img { aspect-ratio: 4 / 3; }
+.bc-projects__col:nth-child(3) figure:nth-child(3) img { aspect-ratio: 4 / 3; }
+
+.bc-projects__note {
+	margin-top: 28px;
+	font-size: var(--bc-fs-16);
+	text-align: center;
+	opacity: var(--bc-dim-80);
+}
+
+.bc-projects__cta {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+	.bc-projects__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+	.bc-projects__grid { grid-template-columns: 1fr; }
+}
+
+/* -------------------------------------------------------------- Social wall */
+
+.bc-social__title {
+	font-size: var(--bc-fs-32);
+	font-weight: 600;
+}
+
+.bc-social__lead {
+	margin-top: 6px;
+	font-size: var(--bc-fs-16);
+	opacity: var(--bc-dim-80);
+}
+
+.bc-social__lead a {
+	color: var(--bc-brand);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.bc-social__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 16px;
+	margin-top: 24px;
+}
+
+.bc-social__grid img {
+	width: 100%;
+	aspect-ratio: 410 / 270;
+	object-fit: cover;
+	border-radius: var(--bc-r-4);
+}
+
+@media (max-width: 700px) {
+	.bc-social__grid { grid-template-columns: repeat(2, 1fr); }
+}

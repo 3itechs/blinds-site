@@ -1,0 +1,29 @@
+# Secrets — wp-config.php holds DB credentials, salts and the Pexels API key.
+# Hostinger's installer creates its own; never commit this file.
+wp-config.php
+.env
+
+# Local server artefacts
+*.log
+debug.log
+error_log
+wp-content/debug.log
+wp-content/uploads/wp-personal-data-exports/
+
+# Caches and generated files
+wp-content/cache/
+wp-content/upgrade/
+wp-content/uploads/cache/
+wp-content/backup*/
+*.sql.gz
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Keep the local .htaccess out — production uses htaccess-production.txt,
+# which has RewriteBase / instead of /blinds/.
+.htaccess

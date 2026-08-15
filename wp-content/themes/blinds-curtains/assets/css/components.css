@@ -1,0 +1,731 @@
+/**
+ * Shared components: buttons, logo, header, footer.
+ */
+
+/* ------------------------------------------------------------------ Buttons */
+
+.bc-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 9px;
+	font-family: var(--bc-font-body);
+	font-weight: 600;
+	text-align: center;
+	transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+/* Header CTA: 36/13 padding, 4px radius (node 2:1094). */
+.bc-btn--cta {
+	background: var(--bc-brand);
+	color: var(--bc-on-brand);
+	font-size: var(--bc-fs-16);
+	line-height: var(--bc-lh-snug);
+	padding: 13px 36px;
+	border-radius: var(--bc-r-4);
+}
+
+/* Hero / section primary: fixed 51px height, 5px radius (node 2:1282). */
+.bc-btn--primary {
+	background: var(--bc-brand);
+	color: var(--bc-on-brand);
+	font-size: var(--bc-fs-18);
+	line-height: 22px;
+	min-height: 51px;
+	padding: 16px 24px;
+	border-radius: var(--bc-r-5);
+}
+
+.bc-btn--cta:hover,
+.bc-btn--primary:hover {
+	background: #cf6a31;
+}
+
+.bc-btn--ghost {
+	background: var(--bc-surface);
+	color: var(--bc-brand);
+	border: 1px solid var(--bc-brand-24);
+	font-size: var(--bc-fs-14);
+	padding: 10px 16px;
+	border-radius: var(--bc-r-50);
+}
+
+/* Outlined variant used by "WhatsApp Us" (node 2:1050): 51px tall, brand
+   border and label on a transparent fill. */
+.bc-btn--outline {
+	background: transparent;
+	color: var(--bc-brand);
+	border: 1px solid var(--bc-brand);
+	font-size: var(--bc-fs-18);
+	line-height: 22px;
+	min-height: 51px;
+	padding: 16px 24px;
+	border-radius: var(--bc-r-5);
+}
+
+.bc-btn--outline:hover {
+	background: var(--bc-brand);
+	color: var(--bc-on-brand);
+}
+
+/* Card-level button pair inside the trust cards. */
+.bc-btn--sm-solid,
+.bc-btn--sm-outline {
+	font-size: var(--bc-fs-16);
+	padding: 11px 20px;
+	border-radius: var(--bc-r-5);
+}
+
+.bc-btn--sm-solid {
+	background: var(--bc-brand);
+	color: var(--bc-on-brand);
+}
+
+.bc-btn--sm-outline {
+	color: var(--bc-on-brand);
+	border: 1px solid var(--bc-on-brand);
+}
+
+.bc-btn--sm-solid:hover {
+	background: #cf6a31;
+}
+
+.bc-btn--sm-outline:hover {
+	background: rgba(255, 255, 255, 0.16);
+}
+
+/* --------------------------------------------------------------------- Logo */
+
+.bc-logo {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.bc-logo__mark {
+	position: relative;
+	flex: 0 0 auto;
+	width: 40px;
+	height: 48px;
+	background: var(--bc-brand);
+	border-radius: var(--bc-r-10);
+}
+
+.bc-logo__mark img {
+	position: absolute;
+	top: 4px;
+	left: 8px;
+	width: 23.119px;
+	height: 39.956px;
+}
+
+.bc-logo__text {
+	font-family: var(--bc-font-display);
+	font-weight: 600;
+	font-size: var(--bc-fs-20);
+	line-height: var(--bc-lh-logo);
+	color: var(--bc-ink);
+	white-space: nowrap;
+}
+
+/* ------------------------------------------------------------------- Header */
+
+.bc-header {
+	position: relative;
+	z-index: 20;
+	filter: drop-shadow(var(--bc-shadow-header));
+}
+
+/* Utility bar: 80px tall, 140px gap between the four promises (node 2:1056). */
+.bc-topbar {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 80px;
+	padding: 24px var(--bc-gutter-wide);
+	background: rgba(248, 248, 248, 0.2);
+}
+
+.bc-topbar__list {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 140px;
+	flex-wrap: wrap;
+}
+
+.bc-topbar__item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: var(--bc-fs-16);
+	font-weight: 500;
+	white-space: nowrap;
+}
+
+.bc-topbar__item img {
+	flex: 0 0 auto;
+	width: 32px;
+	height: 32px;
+	object-fit: cover;
+}
+
+.bc-navbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+	padding: 22px var(--bc-gutter);
+	background: var(--bc-surface);
+}
+
+.bc-nav__list {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
+
+.bc-nav__list a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 40px;
+	padding: 10px 8px;
+	font-size: var(--bc-fs-16);
+	font-weight: 500;
+	white-space: nowrap;
+	transition: color 0.18s ease;
+}
+
+.bc-nav__list a:hover,
+.bc-nav__list .current-menu-item > a {
+	color: var(--bc-brand);
+}
+
+/* Burger is a responsive addition — the desktop-only Figma frame has none. */
+.bc-nav-toggle {
+	display: none;
+	width: 44px;
+	height: 44px;
+	align-items: center;
+	justify-content: center;
+}
+
+.bc-nav-toggle span {
+	position: relative;
+	display: block;
+	width: 22px;
+	height: 2px;
+	background: var(--bc-ink);
+}
+
+.bc-nav-toggle span::before,
+.bc-nav-toggle span::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	width: 22px;
+	height: 2px;
+	background: var(--bc-ink);
+}
+
+.bc-nav-toggle span::before { top: -7px; }
+.bc-nav-toggle span::after  { top: 7px; }
+
+@media (max-width: 1320px) {
+	.bc-topbar__list { gap: 48px; }
+	.bc-nav__list { gap: 2px; }
+	.bc-nav__list a { font-size: var(--bc-fs-14); }
+}
+
+@media (max-width: 1080px) {
+	.bc-nav-toggle { display: flex; }
+
+	.bc-nav {
+		position: absolute;
+		inset: 100% 0 auto 0;
+		background: var(--bc-surface);
+		box-shadow: var(--bc-shadow-header);
+		display: none;
+	}
+
+	.bc-nav.is-open { display: block; }
+
+	.bc-nav__list {
+		flex-direction: column;
+		align-items: stretch;
+		padding: 8px var(--bc-gutter) 16px;
+	}
+
+	.bc-nav__list a {
+		justify-content: flex-start;
+		height: auto;
+		padding: 12px 0;
+		font-size: var(--bc-fs-16);
+	}
+
+	.bc-navbar { position: relative; }
+}
+
+@media (max-width: 860px) {
+	.bc-topbar { display: none; }
+	.bc-header__cta { display: none; }
+}
+
+/* ---------------------------------------------------------------------- FAQ */
+
+.bc-faq__title {
+	font-size: var(--bc-fs-40);
+	font-weight: 700;
+	text-align: center;
+	margin-bottom: 32px;
+}
+
+.bc-faq__item {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.bc-faq__q {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+	width: 100%;
+	padding: 20px 0;
+	text-align: left;
+	font-size: var(--bc-fs-18);
+	font-weight: 600;
+	line-height: var(--bc-lh-snug);
+}
+
+/* Orange circle carrying a minus when open, a plus when closed. */
+.bc-faq__icon {
+	position: relative;
+	flex: 0 0 auto;
+	width: 24px;
+	height: 24px;
+	border-radius: var(--bc-r-pill);
+	background: var(--bc-brand);
+}
+
+.bc-faq__icon::before,
+.bc-faq__icon::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 12px;
+	height: 2px;
+	background: var(--bc-on-brand);
+	transform: translate(-50%, -50%);
+}
+
+.bc-faq__icon::after {
+	transform: translate(-50%, -50%) rotate(90deg);
+	transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.bc-faq__q[aria-expanded="true"] .bc-faq__icon::after {
+	opacity: 0;
+}
+
+.bc-faq__a {
+	padding-bottom: 20px;
+	font-size: var(--bc-fs-16);
+	line-height: var(--bc-lh-normal);
+	opacity: var(--bc-dim-80);
+	max-width: 1180px;
+}
+
+@media (max-width: 640px) {
+	.bc-faq__title { font-size: var(--bc-fs-32); }
+	.bc-faq__q { font-size: var(--bc-fs-16); }
+}
+
+/* ------------------------------------------------- Orange panel + photo band */
+
+/* Shared: "Smart & Motorised" (Gallery) and "Electric Roman blinds" (category
+   archives). Orange panel is 725 of the 1440px artboard; photo runs to edge. */
+.bc-smart {
+	display: grid;
+	grid-template-columns: 725fr 715fr;
+	align-items: stretch;
+	background: var(--bc-brand);
+}
+
+.bc-smart__panel {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	padding: 56px 40px 56px var(--bc-gutter);
+}
+
+.bc-smart__body {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 12px;
+	width: 100%;
+	max-width: 566px;
+	color: var(--bc-on-brand);
+}
+
+.bc-smart__title {
+	font-size: var(--bc-fs-48);
+	font-weight: 600;
+	line-height: var(--bc-lh-tight);
+}
+
+.bc-smart__lead {
+	font-size: var(--bc-fs-24);
+	font-weight: 500;
+	line-height: var(--bc-lh-snug);
+}
+
+.bc-smart__text {
+	margin-top: 8px;
+	font-size: var(--bc-fs-16);
+	line-height: var(--bc-lh-normal);
+}
+
+.bc-smart__actions {
+	display: flex;
+	gap: 16px;
+	flex-wrap: wrap;
+	margin-top: 24px;
+}
+
+/* White pills with the brand colour as the label. */
+.bc-smart__btn {
+	background: var(--bc-surface);
+	color: var(--bc-brand);
+	font-size: var(--bc-fs-18);
+	font-weight: 600;
+	line-height: 22px;
+	padding: 14px 24px;
+	border-radius: var(--bc-r-5);
+}
+
+.bc-smart__btn:hover {
+	background: var(--bc-cream-soft);
+}
+
+.bc-smart__media {
+	margin: 0;
+	min-height: 595px;
+}
+
+.bc-smart__media img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+@media (max-width: 1024px) {
+	.bc-smart { grid-template-columns: 1fr; }
+	.bc-smart__panel { padding: 40px var(--bc-gutter); justify-content: flex-start; }
+	.bc-smart__media { min-height: 0; }
+	.bc-smart__media img { max-height: 360px; }
+	.bc-smart__title { font-size: var(--bc-fs-36); }
+}
+
+/* ------------------------------------------------------- Closing CTA banner */
+
+/* Figma "Frame 2147233282": 1280x443 card, centred copy over a dark scrim. */
+.bc-upgrade__card {
+	position: relative;
+	isolation: isolate;
+	display: grid;
+	place-items: center;
+	min-height: 443px;
+	padding: 40px var(--bc-gutter);
+	border-radius: var(--bc-r-8);
+	overflow: hidden;
+	text-align: center;
+}
+
+.bc-upgrade__bg {
+	position: absolute;
+	inset: 0;
+	z-index: -2;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* Scrim: the photo is light in the middle, so white text needs the help. */
+.bc-upgrade__card::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background: rgba(0, 0, 0, 0.38);
+}
+
+.bc-upgrade__body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+	max-width: 720px;
+}
+
+/* 24px: the headline measures 534px wide on the 1440px artboard, and this
+   string renders 712px at 32px, so 32 x (534/712) lands on 24. */
+.bc-upgrade__title {
+	font-size: var(--bc-fs-24);
+	font-weight: 600;
+	line-height: var(--bc-lh-snug);
+	color: var(--bc-on-brand);
+}
+
+.bc-upgrade__text {
+	font-size: var(--bc-fs-16);
+	line-height: var(--bc-lh-normal);
+	color: var(--bc-on-brand);
+}
+
+.bc-upgrade__cta {
+	margin-top: 8px;
+	min-height: 46px;
+	padding: 12px 28px;
+	background: var(--bc-brand);
+	color: var(--bc-on-brand);
+	font-size: var(--bc-fs-18);
+	/* 22px line box + 24px padding = the 46px button height in the design. */
+	line-height: 22px;
+	border-radius: var(--bc-r-5);
+}
+
+.bc-upgrade__cta:hover {
+	background: #cf6a31;
+}
+
+@media (max-width: 640px) {
+	.bc-upgrade__card { min-height: 340px; padding: 32px 20px; }
+	.bc-upgrade__title { font-size: var(--bc-fs-24); }
+}
+
+/* ------------------------------------------------------------------- Footer */
+
+.bc-footer {
+	background: var(--bc-surface);
+}
+
+.bc-footer__main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+	padding-block: 56px;
+}
+
+.bc-footer__cols {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	width: 100%;
+}
+
+.bc-footer__col {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	min-height: 198px;
+}
+
+/* Only the first column carries the divider rule (node 2:1128). */
+.bc-footer__col--brand {
+	align-items: center;
+	padding-right: 75px;
+	border-right: 1px solid var(--bc-rule);
+}
+
+.bc-footer__col--brand .bc-logo {
+	align-self: flex-start;
+}
+
+.bc-footer__about {
+	font-size: var(--bc-fs-13);
+	line-height: var(--bc-lh-snug);
+	opacity: var(--bc-dim-80);
+}
+
+.bc-footer__heading {
+	font-size: var(--bc-fs-24);
+	font-weight: 600;
+	line-height: var(--bc-lh-snug);
+	color: var(--bc-brand);
+}
+
+.bc-footer__links {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.bc-footer__links a {
+	display: block;
+	padding-block: 7px;
+	font-family: var(--bc-font-ui);
+	font-size: var(--bc-fs-14);
+	font-weight: 500;
+	line-height: var(--bc-lh-snug);
+	opacity: var(--bc-dim-60);
+	transition: opacity 0.18s ease, color 0.18s ease;
+}
+
+.bc-footer__links a:hover {
+	opacity: 1;
+	color: var(--bc-brand);
+}
+
+/* Contact pill row (node 2:1157 and siblings). */
+.bc-footer__contact {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 12px 16px;
+	border: 1px solid var(--bc-brand-24);
+	border-radius: var(--bc-r-50);
+	background: var(--bc-surface);
+}
+
+.bc-footer__need-help {
+	font-family: var(--bc-font-display);
+	font-weight: 500;
+	font-size: var(--bc-fs-14);
+	color: var(--bc-brand);
+	padding: 10px 16px;
+	border: 1px solid var(--bc-brand-24);
+	border-radius: var(--bc-r-50);
+	white-space: nowrap;
+}
+
+.bc-footer__contact-item {
+	display: flex;
+	flex: 1 0 0;
+	min-width: 0;
+	align-items: center;
+	gap: 12px;
+	padding: 12px 16px;
+	background: var(--bc-surface-alt);
+	border: 1px solid var(--bc-brand-24);
+	border-radius: var(--bc-r-50);
+	font-family: var(--bc-font-ui);
+	font-size: var(--bc-fs-14);
+	font-weight: 500;
+	white-space: nowrap;
+}
+
+.bc-footer__contact-item > span:last-child {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	opacity: var(--bc-dim-60);
+}
+
+.bc-footer__contact-item .bc-icon-ring {
+	display: grid;
+	place-items: center;
+	width: 24px;
+	height: 24px;
+	border: 1px solid var(--bc-brand-36);
+	border-radius: var(--bc-r-30);
+	background: var(--bc-surface);
+	flex: 0 0 auto;
+}
+
+/* The exported glyphs are stored flipped (Figma applied rotate(180) + scaleX(-1),
+   which nets out to a vertical flip). Undo it here. */
+.bc-footer__contact-item .bc-icon-ring img {
+	width: 14px;
+	height: 14px;
+	transform: scaleY(-1);
+}
+
+/* Orange legal strip. */
+.bc-footer__bar {
+	background: var(--bc-brand);
+	color: var(--bc-on-brand);
+}
+
+.bc-footer__bar-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+	padding-block: 18px;
+}
+
+.bc-footer__legal {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.bc-footer__legal a {
+	font-family: var(--bc-font-ui);
+	font-size: var(--bc-fs-14);
+	font-weight: 500;
+	line-height: var(--bc-lh-snug);
+	padding-right: 24px;
+	margin-right: 24px;
+	border-right: 1px solid var(--bc-rule-light);
+}
+
+.bc-footer__legal a:last-child {
+	padding-right: 12px;
+	margin-right: 0;
+	border-right: 0;
+}
+
+.bc-footer__social {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.bc-footer__social a {
+	display: grid;
+	place-items: center;
+	width: 24px;
+	height: 24px;
+	border-radius: var(--bc-r-pill);
+	background: rgba(255, 255, 255, 0.24);
+	transition: background-color 0.18s ease;
+}
+
+.bc-footer__social a:hover {
+	background: rgba(255, 255, 255, 0.45);
+}
+
+.bc-footer__social svg {
+	width: 13px;
+	height: 13px;
+	fill: var(--bc-on-brand);
+}
+
+@media (max-width: 900px) {
+	.bc-footer__cols {
+		grid-template-columns: 1fr;
+	}
+
+	.bc-footer__col {
+		min-height: 0;
+	}
+
+	.bc-footer__col--brand {
+		padding-right: 0;
+		border-right: 0;
+		border-bottom: 1px solid var(--bc-rule);
+		padding-bottom: 24px;
+	}
+
+	.bc-footer__bar-inner {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}

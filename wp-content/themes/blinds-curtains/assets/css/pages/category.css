@@ -1,0 +1,331 @@
+/**
+ * Product category archive — Figma node 2:528.
+ */
+
+/* --------------------------------------------------------- Page hero */
+
+.bc-page-hero {
+	position: relative;
+	isolation: isolate;
+	height: 628px;
+	display: grid;
+	/* minmax(0, 1fr) stops the auto track from sizing to the card's 605px
+	   max-content, which would make the card's percentage max-width resolve
+	   against the track rather than the viewport and overflow small screens. */
+	grid-template-columns: minmax(0, 1fr);
+	place-items: center;
+	overflow: hidden;
+}
+
+.bc-page-hero__image {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.bc-page-hero__card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+	width: 605px;
+	max-width: calc(100% - (var(--bc-gutter) * 2));
+	padding: 44px 32px;
+	text-align: center;
+	background: rgba(255, 255, 255, 0.18);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+}
+
+/* The eyebrow is the one place the design uses this indigo. */
+.bc-page-hero__eyebrow {
+	font-size: var(--bc-fs-24);
+	font-weight: 500;
+	color: #7072ff;
+}
+
+.bc-page-hero__title {
+	font-size: var(--bc-fs-48);
+	font-weight: 600;
+	line-height: var(--bc-lh-tight);
+	color: var(--bc-ink);
+}
+
+.bc-page-hero__title-accent {
+	color: var(--bc-brand);
+}
+
+.bc-page-hero__text {
+	max-width: 420px;
+	font-size: var(--bc-fs-16);
+	line-height: var(--bc-lh-normal);
+}
+
+@media (max-width: 900px) {
+	.bc-page-hero { height: 480px; }
+	.bc-page-hero__title { font-size: var(--bc-fs-32); }
+	.bc-page-hero__eyebrow { font-size: var(--bc-fs-18); }
+	.bc-page-hero__card { padding: 32px 24px; }
+}
+
+/* ------------------------------------------------- How our service Work */
+
+.bc-service-bar {
+	display: flex;
+	align-items: stretch;
+	margin-top: 40px;
+	background: var(--bc-surface-alt);
+	overflow: hidden;
+}
+
+/* Angled orange tab: the right edge slopes in by 24px (node 2:669). */
+.bc-service-bar__tab {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	flex: 0 0 auto;
+	width: 303px;
+	padding: 20px 48px 20px 32px;
+	background: var(--bc-brand);
+	color: var(--bc-on-brand);
+	font-size: var(--bc-fs-24);
+	font-weight: 600;
+	line-height: var(--bc-lh-snug);
+	clip-path: polygon(0 0, 100% 0, calc(100% - 24px) 100%, 0 100%);
+}
+
+.bc-service-bar__steps {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	flex: 1;
+	gap: 16px;
+	padding: 20px 24px;
+}
+
+.bc-service-bar__steps li {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+}
+
+.bc-service-bar__num {
+	display: grid;
+	place-items: center;
+	flex: 0 0 auto;
+	width: 24px;
+	height: 24px;
+	border-radius: var(--bc-r-pill);
+	background: var(--bc-brand);
+	color: var(--bc-on-brand);
+	font-size: var(--bc-fs-14);
+	font-weight: 600;
+}
+
+.bc-service-bar__text {
+	font-size: var(--bc-fs-18);
+	font-weight: 500;
+	line-height: var(--bc-lh-snug);
+}
+
+@media (max-width: 1024px) {
+	.bc-service-bar { flex-direction: column; }
+	.bc-service-bar__tab { width: 100%; clip-path: none; padding: 16px 24px; }
+	.bc-service-bar__steps { grid-template-columns: 1fr; }
+}
+
+/* ------------------------------------------------------- Product grid */
+
+.bc-range__head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	margin-top: 56px;
+}
+
+.bc-range__title {
+	font-size: var(--bc-fs-32);
+	font-weight: 600;
+}
+
+.bc-range__nav {
+	display: flex;
+	gap: 16px;
+}
+
+.bc-range__arrow a,
+.bc-range__arrow > span {
+	display: grid;
+	place-items: center;
+	width: 40px;
+	height: 40px;
+	border-radius: var(--bc-r-pill);
+	background: var(--bc-brand);
+	color: var(--bc-on-brand);
+	font-size: var(--bc-fs-18);
+}
+
+.bc-range__arrow.is-disabled > span {
+	opacity: 0.35;
+}
+
+/* Cards are 308x326 with a frosted label pill across the bottom. */
+.bc-products {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 16px 16px;
+	margin-top: 24px;
+}
+
+.bc-product-card a {
+	position: relative;
+	display: block;
+	aspect-ratio: 308 / 326;
+	border-radius: var(--bc-r-8);
+	overflow: hidden;
+}
+
+.bc-product-card img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.4s ease;
+}
+
+.bc-product-card a:hover img {
+	transform: scale(1.05);
+}
+
+.bc-product-card__label {
+	position: absolute;
+	left: 24px;
+	right: 24px;
+	bottom: 20px;
+	padding: 10px 16px;
+	border-radius: var(--bc-r-6, 6px);
+	background: rgba(0, 0, 0, 0.32);
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+	color: var(--bc-on-brand);
+	font-size: var(--bc-fs-18);
+	font-weight: 500;
+	text-align: center;
+}
+
+@media (max-width: 1024px) {
+	.bc-products { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+	.bc-products { grid-template-columns: 1fr; }
+}
+
+/* --------------------------------------------------------- Pagination */
+
+.bc-pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	margin-top: 36px;
+}
+
+.bc-pagination .page-numbers {
+	display: grid;
+	place-items: center;
+	min-width: 46px;
+	height: 46px;
+	padding: 0 10px;
+	border: 1px solid rgba(0, 0, 0, 0.14);
+	border-radius: var(--bc-r-8);
+	font-size: var(--bc-fs-18);
+	transition: border-color 0.18s ease, color 0.18s ease;
+}
+
+.bc-pagination .page-numbers:hover {
+	border-color: var(--bc-brand);
+	color: var(--bc-brand);
+}
+
+.bc-pagination .page-numbers.current {
+	border-color: var(--bc-brand);
+	color: var(--bc-brand);
+}
+
+.bc-pagination .page-numbers.dots {
+	border: 0;
+	min-width: 0;
+}
+
+/* ----------------------------------------------------- Why / features */
+
+.bc-why__title {
+	font-size: var(--bc-fs-48);
+	font-weight: 600;
+	line-height: var(--bc-lh-normal);
+	text-align: center;
+}
+
+.bc-why__title span {
+	color: var(--bc-brand);
+}
+
+.bc-why__grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 32px 56px;
+	margin-top: 40px;
+	padding: 40px 48px;
+	background: var(--bc-cream);
+	border-radius: var(--bc-r-20);
+}
+
+.bc-why__item {
+	display: flex;
+	align-items: flex-start;
+	gap: 20px;
+}
+
+.bc-why__tick {
+	display: grid;
+	place-items: center;
+	flex: 0 0 auto;
+	width: 48px;
+	height: 48px;
+	border-radius: var(--bc-r-8);
+	background: var(--bc-brand);
+}
+
+.bc-why__tick svg {
+	width: 26px;
+	height: 26px;
+	fill: var(--bc-on-brand);
+}
+
+.bc-why__item-title {
+	font-size: var(--bc-fs-20);
+	font-weight: 600;
+	line-height: var(--bc-lh-snug);
+}
+
+.bc-why__item-text {
+	margin-top: 4px;
+	font-size: var(--bc-fs-16);
+	line-height: var(--bc-lh-snug);
+	opacity: var(--bc-dim-80);
+}
+
+.bc-range__empty {
+	margin-top: 32px;
+	text-align: center;
+	opacity: var(--bc-dim-60);
+}
+
+@media (max-width: 900px) {
+	.bc-why__grid { grid-template-columns: 1fr; padding: 28px 24px; }
+	.bc-why__title { font-size: var(--bc-fs-32); }
+	.bc-range__head { margin-top: 40px; }
+}

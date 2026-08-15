@@ -1,0 +1,21 @@
+/*
+Theme Name: Blinds and Curtains
+Theme URI: http://localhost/blinds
+Author: Built from Figma design RDzp9HOVnJGsVu5fpTmhNd
+Description: Custom classic theme implementing the "blinds and curtains" Figma design. Nine bespoke page templates, hand-written CSS, no page builder.
+Version: 0.1.0
+Requires at least: 6.0
+Requires PHP: 7.4
+License: GPL-2.0-or-later
+Text Domain: blinds-curtains
+*/
+
+/*
+ * Actual styles live in assets/css/ and are enqueued from functions.php:
+ *   tokens.css      design tokens pulled from Figma variables
+ *   base.css        reset + element defaults
+ *   layout.css      containers, grid, section rhythm
+ *   components.css  buttons, cards, forms, nav, accordion
+ *   pages/*.css     per-template styles
+ * This file exists for the WordPress theme header only.
+ */

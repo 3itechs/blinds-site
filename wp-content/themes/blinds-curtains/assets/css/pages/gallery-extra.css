@@ -1,0 +1,102 @@
+/**
+ * Gallery page sections below the grid, transcribed from the SVG export of
+ * the Gallery frame: automation benefits and the guarantee split.
+ *
+ * The orange "Smart & Motorised" band lives in components.css — it is shared
+ * with the product category pages, which reuse it as "Electric Roman blinds".
+ */
+
+/* ---------------------------------------------------- Automation benefits */
+
+.bc-benefits__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 32px;
+}
+
+.bc-benefit {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.bc-benefit__media {
+	margin: 0;
+	border-radius: var(--bc-r-8);
+	overflow: hidden;
+	border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.bc-benefit__media img {
+	width: 100%;
+	aspect-ratio: 410 / 230;
+	object-fit: cover;
+}
+
+.bc-benefit__title {
+	font-size: var(--bc-fs-24);
+	font-weight: 600;
+	line-height: var(--bc-lh-snug);
+}
+
+.bc-benefit__text {
+	font-size: var(--bc-fs-16);
+	line-height: var(--bc-lh-normal);
+	opacity: var(--bc-dim-80);
+}
+
+@media (max-width: 900px) {
+	.bc-benefits__grid { grid-template-columns: 1fr; }
+}
+
+/* ------------------------------------------------------------- Guarantee */
+
+.bc-guarantee__layout {
+	display: grid;
+	grid-template-columns: 620fr 620fr;
+	gap: 40px;
+	align-items: center;
+}
+
+.bc-guarantee__media {
+	margin: 0;
+	border-radius: var(--bc-r-8);
+	overflow: hidden;
+}
+
+.bc-guarantee__media img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.bc-guarantee__body {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 20px;
+}
+
+.bc-guarantee__title {
+	max-width: 620px;
+	font-size: var(--bc-fs-48);
+	font-weight: 600;
+	line-height: var(--bc-lh-tight);
+}
+
+.bc-guarantee__text {
+	font-size: var(--bc-fs-18);
+	line-height: var(--bc-lh-normal);
+}
+
+.bc-guarantee__cta {
+	margin-top: 12px;
+	font-size: var(--bc-fs-18);
+	padding: 14px 28px;
+	border-radius: var(--bc-r-5);
+}
+
+@media (max-width: 1024px) {
+	.bc-guarantee__layout { grid-template-columns: 1fr; }
+	.bc-guarantee__title { font-size: var(--bc-fs-32); }
+}
