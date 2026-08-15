@@ -85,17 +85,19 @@
 	margin-bottom: 24px;
 }
 
+/* Design: white card is a fixed 620px at x120, the aside starts at x820 —
+   an 80px gutter between them, not an even split. */
 .bc-tellus__layout {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 40px;
+	grid-template-columns: 620px minmax(0, 1fr);
+	gap: 80px;
 	align-items: start;
 }
 
 .bc-tellus__form {
 	background: var(--bc-surface);
 	border-radius: var(--bc-r-12);
-	padding: 8px 24px 32px;
+	padding: 24px;
 }
 
 /* Inside the panel the form drops its own band and title styling. */
@@ -109,18 +111,74 @@
 	margin-bottom: 24px;
 }
 
+/* minmax(0, 1fr) — plain 1fr is minmax(auto, 1fr), so the date and select
+   inputs pushed their column wider and the three columns came out uneven
+   (155 / 155 / 183 instead of 180 each). */
 .bc-appointment--bare .bc-form__grid {
-	grid-template-columns: repeat(3, 1fr);
-	gap: 16px 20px;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 18px 16px;
+}
+
+/* Compact field scale from the design: 36px inputs, 14px labels. */
+.bc-appointment--bare .bc-field {
+	gap: 6px;
 }
 
 .bc-appointment--bare .bc-field label,
 .bc-appointment--bare .bc-form__needs legend {
-	font-size: var(--bc-fs-16);
+	font-size: var(--bc-fs-14);
+	font-weight: 500;
+}
+
+.bc-appointment--bare .bc-field input,
+.bc-appointment--bare .bc-field select {
+	height: 36px;
+	padding: 0 12px;
+	font-size: var(--bc-fs-14);
+	border-radius: var(--bc-r-6, 6px);
+}
+
+.bc-appointment--bare .bc-form__needs {
+	margin-top: 20px;
+}
+
+.bc-appointment--bare .bc-checks {
+	gap: 32px;
+}
+
+.bc-appointment--bare .bc-check {
+	font-size: var(--bc-fs-14);
+}
+
+.bc-appointment--bare .bc-check input {
+	width: 16px;
+	height: 16px;
+}
+
+.bc-appointment--bare .bc-form > .bc-field--full {
+	margin-top: 18px;
 }
 
 .bc-appointment--bare .bc-form__submit {
 	justify-content: flex-start;
+	margin-top: 24px;
+}
+
+.bc-appointment--bare .bc-form__submit .bc-btn {
+	min-width: 0;
+	min-height: 44px;
+	padding: 11px 32px;
+	font-size: var(--bc-fs-16);
+}
+
+/* 36px is below the comfortable touch target, so the compact scale is
+   desktop-only; narrow screens get the full-size fields back. */
+@media (max-width: 900px) {
+	.bc-appointment--bare .bc-field input,
+	.bc-appointment--bare .bc-field select {
+		height: 44px;
+		font-size: var(--bc-fs-16);
+	}
 }
 
 .bc-tellus__aside h3 {
@@ -165,14 +223,21 @@
 	color: var(--bc-brand);
 }
 
+/* The 620px card no longer fits beside the aside — stack and let it fill. */
+@media (max-width: 1240px) {
+	.bc-tellus__layout { grid-template-columns: 1fr; gap: 32px; }
+	.bc-tellus__form { max-width: 620px; }
+}
+
 @media (max-width: 1024px) {
-	.bc-tellus__layout { grid-template-columns: 1fr; }
-	.bc-appointment--bare .bc-form__grid { grid-template-columns: repeat(2, 1fr); }
+	.bc-appointment--bare .bc-form__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 	.bc-tellus__panel { padding: 24px 20px 32px; }
+	.bc-tellus__form { max-width: none; }
 }
 
 @media (max-width: 640px) {
-	.bc-appointment--bare .bc-form__grid { grid-template-columns: 1fr; }
+	.bc-appointment--bare .bc-form__grid { grid-template-columns: minmax(0, 1fr); }
+	.bc-tellus__form { padding: 20px 16px; }
 }
 
 /* ---------------------------------------------------- Our Journey (About) */
